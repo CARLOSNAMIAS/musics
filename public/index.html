@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SpotifyClone - Tu Música</title>
+    <link rel="icon" type="image/x-icon" href="./img/spofyy.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="spotify-container">
+        <!-- SIDEBAR - NAVEGACIÓN PRINCIPAL -->
+        <aside class="spotify-sidebar">
+            <!-- Logo de Spotify -->
+            <div class="spotify-logo">
+                <i class="fab fa-spotify"></i>
+                <h1>Spotify</h1>
+            </div>
+
+            <!-- Navegación principal -->
+            <nav class="nav-section">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-search"></i>
+                    <span>Buscar</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-list"></i>
+                    <span>Tu biblioteca</span>
+                </a>
+            </nav>
+
+            <!-- Playlist y favoritos -->
+            <nav class="nav-section">
+                <a href="#" class="nav-item">
+                    <i class="fas fa-plus-square"></i>
+                    <span>Crear playlist</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-heart"></i>
+                    <span>Canciones que te gustan</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- VISTA PRINCIPAL -->
+        <main class="main-view">
+            <!-- Header con búsqueda -->
+            <header class="main-header">
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        class="search-input" 
+                        placeholder="¿Qué quieres escuchar?"
+                        autocomplete="off"
+                    >
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <div class="profile-section">
+                    <button class="profile-btn" title="Perfil">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Contenido principal -->
+            <div class="main-content">
+                <!-- Pantalla de bienvenida -->
+                <div id="welcome-screen" class="welcome-section">
+                    <h2>Busca tu música favorita</h2>
+                    <p>Encuentra millones de canciones y artistas de todo el mundo</p>
+                </div>
+
+                <!-- Resultados de búsqueda -->
+                <div id="search-results" class="search-results hidden">
+                    <h3>Resultados de búsqueda</h3>
+                    <ul id="song-list" class="song-grid"></ul>
+                </div>
+            </div>
+        </main>
+
+        <!-- REPRODUCTOR INFERIOR (NOW PLAYING BAR) -->
+        <footer class="now-playing-bar">
+            <!-- Información de la canción actual -->
+            <div class="current-track">
+                <img id="current-cover" src="https://via.placeholder.com/56" alt="Cover" class="current-cover">
+                <div class="current-info">
+                    <h4 id="current-title">Selecciona una canción</h4>
+                    <p id="current-artist">Artista desconocido</p>
+                </div>
+                <button class="like-btn" title="Me gusta">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+
+            <!-- Controles de reproducción -->
+            <div class="player-controls">
+                <div class="control-buttons">
+                    <button class="control-btn shuffle-btn" title="Aleatorio">
+                        <i class="fas fa-random"></i>
+                    </button>
+                    <button class="control-btn prev-btn" title="Anterior">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button id="play-pause-btn" class="control-btn play-pause-btn" title="Play/Pause">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="control-btn next-btn" title="next">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                    <button class="control-btn repeat-btn" title="Repetir">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+                <div class="progress-container">
+                    <span class="time-label" id="current-time">0:00</span>
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="time-label" id="duration-time">0:00</span>
+                </div>
+            </div>
+
+            <!-- Controles de volumen -->
+            <div class="volume-controls">
+                <button class="volume-btn" title="Ajustar volumen">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <div class="volume-slider">
+                    <div class="volume-fill"></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Audio player (oculto) -->
+    <audio id="audio-player" preload="none">
+        <source id="audio-source" src="" type="audio/mp3">
+        Tu navegador no soporta el elemento audio.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

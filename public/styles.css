@@ -1,0 +1,965 @@
+/* ============================================
+           VARIABLES CSS - COLORES SPOTIFY
+        ============================================ */
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #121212;
+            --spotify-gray: #282828;
+            --spotify-light-gray: #535353;
+            --spotify-text-gray: #b3b3b3;
+            --spotify-white: #ffffff;
+            --spotify-hover: rgba(255, 255, 255, 0.1);
+            
+            /* Variables responsivas */
+            --sidebar-width: 240px;
+            --mobile-padding: 16px;
+            --desktop-padding: 32px;
+        }
+
+        /* ============================================
+           ESTILOS GENERALES
+        ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, var(--spotify-dark-gray) 0%, var(--spotify-black) 100%);
+            color: var(--spotify-white);
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            /* Previene el zoom en inputs en iOS */
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* ============================================
+           LAYOUT PRINCIPAL ESTILO SPOTIFY
+        ============================================ */
+        .spotify-container {
+            display: grid;
+            grid-template-areas: 
+                "sidebar main-view"
+                "now-playing now-playing";
+            grid-template-columns: var(--sidebar-width) 1fr;
+            grid-template-rows: 1fr 90px;
+            height: 100vh;
+            gap: 8px;
+            padding: 8px;
+        }
+
+        /* ============================================
+           SIDEBAR - NAVEGACIÓN PRINCIPAL
+        ============================================ */
+        .spotify-sidebar {
+            grid-area: sidebar;
+            background: var(--spotify-black);
+            border-radius: 8px;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            /* Evita que el sidebar se encoja demasiado */
+            min-width: 200px;
+        }
+
+        .spotify-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .spotify-logo i {
+            font-size: 32px;
+            color: var(--spotify-green);
+        }
+
+        .spotify-logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .nav-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 16px;
+            border-radius: 4px;
+            color: var(--spotify-text-gray);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            /* Mejora la accesibilidad táctil */
+            min-height: 44px;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--spotify-white);
+            background: var(--spotify-hover);
+        }
+
+        .nav-item i {
+            font-size: 24px;
+            width: 24px;
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           VISTA PRINCIPAL - ÁREA DE CONTENIDO
+        ============================================ */
+        .main-view {
+            grid-area: main-view;
+            background: var(--spotify-dark-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header con búsqueda */
+        .main-header {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 16px var(--desktop-padding);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            /* Flexibilidad para diferentes tamaños */
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .search-container {
+            position: relative;
+            width: 364px;
+            max-width: 50%;
+            /* Flexibilidad en el ancho */
+            min-width: 200px;
+        }
+
+        .search-input {
+            width: 100%;
+            height: 48px;
+            background: var(--spotify-white);
+            border: none;
+            border-radius: 50px;
+            padding: 0 48px 0 16px;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--spotify-black);
+            outline: none;
+            transition: all 0.2s ease;
+            /* Mejora para dispositivos táctiles */
+            touch-action: manipulation;
+        }
+
+        .search-input:focus {
+            transform: scale(1.02);
+            box-shadow: 0 0 0 2px var(--spotify-green);
+        }
+
+        .search-input::placeholder {
+            color: var(--spotify-light-gray);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--spotify-light-gray);
+            pointer-events: none;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .profile-btn {
+            background: var(--spotify-black);
+            border: none;
+            border-radius: 50px;
+            padding: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            /* Mejora la accesibilidad táctil */
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .profile-btn:hover {
+            transform: scale(1.04);
+        }
+
+        .profile-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--spotify-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--spotify-white);
+        }
+
+        /* ============================================
+           CONTENIDO PRINCIPAL
+        ============================================ */
+        .main-content {
+            flex: 1;
+            padding: 0 var(--desktop-padding) var(--desktop-padding);
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--spotify-gray) transparent;
+            /* Mejora el scroll en dispositivos táctiles */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .main-content::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .main-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .main-content::-webkit-scrollbar-thumb {
+            background: var(--spotify-gray);
+            border-radius: 6px;
+        }
+
+        .main-content::-webkit-scrollbar-thumb:hover {
+            background: var(--spotify-light-gray);
+        }
+
+        .welcome-section {
+            text-align: center;
+            padding: 64px 0;
+        }
+
+        .welcome-section h2 {
+            font-size: clamp(32px, 8vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(45deg, var(--spotify-green), var(--spotify-white));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Mejora la legibilidad en pantallas pequeñas */
+            line-height: 1.2;
+        }
+
+        .welcome-section p {
+            font-size: clamp(16px, 3vw, 18px);
+            color: var(--spotify-text-gray);
+            margin-bottom: 32px;
+            line-height: 1.4;
+        }
+
+        /* ============================================
+           LISTA DE RESULTADOS DE BÚSQUEDA
+        ============================================ */
+        .search-results {
+            margin-top: 24px;
+        }
+
+        .search-results h3 {
+            font-size: clamp(20px, 4vw, 24px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--spotify-white);
+        }
+
+        .song-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 24px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .song-card {
+            background: var(--spotify-gray);
+            border-radius: 8px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            /* Mejora la accesibilidad táctil */
+            touch-action: manipulation;
+        }
+
+        .song-card:hover {
+            background: var(--spotify-light-gray);
+            transform: translateY(-4px);
+        }
+
+        /* Mejora para dispositivos táctiles */
+        .song-card:active {
+            transform: scale(0.98);
+        }
+
+        .song-cover {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            object-fit: cover;
+            /* Mejora la carga de imágenes */
+            background: var(--spotify-light-gray);
+        }
+
+        .song-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--spotify-white);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+        }
+
+        .song-info p {
+            font-size: 14px;
+            color: var(--spotify-text-gray);
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+        }
+
+        .play-btn {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            width: 48px;
+            height: 48px;
+            background: var(--spotify-green);
+            border: none;
+            border-radius: 50%;
+            color: var(--spotify-black);
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Mejora la accesibilidad */
+            touch-action: manipulation;
+        }
+
+        .song-card:hover .play-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.04);
+        }
+
+        .play-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* ============================================
+           REPRODUCTOR INFERIOR (NOW PLAYING BAR)
+        ============================================ */
+        .now-playing-bar {
+            grid-area: now-playing;
+            background: var(--spotify-black);
+            border-radius: 8px;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            /* Altura mínima para dispositivos táctiles */
+            min-height: 90px;
+        }
+
+        /* Información de la canción actual */
+        .current-track {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 0 0 320px;
+            /* Previene que se encoja demasiado */
+            min-width: 0;
+        }
+
+        .current-cover {
+            width: 56px;
+            height: 56px;
+            border-radius: 4px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: var(--spotify-gray);
+        }
+
+        .current-info {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .current-info h4 {
+            font-size: 14px;
+            font-weight: 400;
+            margin: 0 0 4px 0;
+            color: var(--spotify-white);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .current-info p {
+            font-size: 12px;
+            margin: 0;
+            color: var(--spotify-text-gray);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            color: var(--spotify-text-gray);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 8px;
+            min-width: 32px;
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .like-btn:hover {
+            color: var(--spotify-white);
+        }
+
+        /* Controles de reproducción */
+        .player-controls {
+            flex: 1;
+            max-width: 720px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 0;
+        }
+
+        .control-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: var(--spotify-text-gray);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            /* Mejora la accesibilidad táctil */
+            touch-action: manipulation;
+        }
+
+        .control-btn:hover {
+            color: var(--spotify-white);
+            transform: scale(1.06);
+        }
+
+        .control-btn:active {
+            transform: scale(0.94);
+        }
+
+        .play-pause-btn {
+            background: var(--spotify-white);
+            color: var(--spotify-black);
+            border-radius: 50%;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .play-pause-btn:hover {
+            background: var(--spotify-white);
+            color: var(--spotify-black);
+            transform: scale(1.06);
+        }
+
+        /* Barra de progreso */
+        .progress-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .time-label {
+            font-size: 12px;
+            color: var(--spotify-text-gray);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: var(--spotify-gray);
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+            /* Mejora la accesibilidad táctil */
+            min-height: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .progress-fill {
+            height: 4px;
+            background: var(--spotify-white);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* Controles de volumen */
+        .volume-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 0 0 125px;
+            justify-content: flex-end;
+        }
+
+        .volume-btn {
+            background: none;
+            border: none;
+            color: var(--spotify-text-gray);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 8px;
+            min-width: 32px;
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .volume-btn:hover {
+            color: var(--spotify-white);
+        }
+
+        .volume-slider {
+            width: 93px;
+            height: 4px;
+            background: var(--spotify-gray);
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+            /* Mejora la accesibilidad táctil */
+            min-height: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .volume-fill {
+            height: 4px;
+            background: var(--spotify-white);
+            border-radius: 2px;
+            width: 70%;
+        }
+
+        /* ============================================
+           ESTADOS ESPECIALES
+        ============================================ */
+        .hidden {
+            display: none !important;
+        }
+
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Animación de carga */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--spotify-gray);
+            border-radius: 50%;
+            border-top-color: var(--spotify-green);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN - TABLETS
+        ============================================ */
+        @media (max-width: 1024px) {
+            :root {
+                --sidebar-width: 200px;
+            }
+
+            .spotify-sidebar {
+                padding: 16px 12px;
+                gap: 24px;
+            }
+
+            .spotify-logo h1 {
+                font-size: 20px;
+            }
+
+            .nav-item {
+                padding: 10px 12px;
+                gap: 12px;
+            }
+
+            .nav-item i {
+                font-size: 20px;
+            }
+
+            .song-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 20px;
+            }
+
+            .current-track {
+                flex: 0 0 280px;
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN - TABLETS PEQUEÑAS
+        ============================================ */
+        @media (max-width: 768px) {
+            .spotify-container {
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                    "main-view"
+                    "now-playing";
+                grid-template-rows: 1fr 90px;
+                gap: 0;
+                padding: 0;
+            }
+
+            .spotify-sidebar {
+                display: none;
+            }
+
+            .main-view {
+                border-radius: 0;
+            }
+
+            .now-playing-bar {
+                border-radius: 0;
+                border-top: 1px solid var(--spotify-gray);
+            }
+
+            .main-header {
+                padding: 16px var(--mobile-padding);
+                flex-wrap: nowrap;
+            }
+
+            .search-container {
+                width: 100%;
+                max-width: none;
+                min-width: 0;
+                flex: 1;
+            }
+
+            .profile-section {
+                flex-shrink: 0;
+            }
+
+            .main-content {
+                padding: 0 var(--mobile-padding) var(--mobile-padding);
+            }
+
+            .song-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 16px;
+            }
+
+            .welcome-section {
+                padding: 32px 0;
+            }
+
+            /* Ajustes del reproductor */
+            .current-track {
+                flex: 0 0 180px;
+            }
+
+            .current-cover {
+                width: 48px;
+                height: 48px;
+            }
+
+            .current-info h4 {
+                font-size: 13px;
+            }
+
+            .current-info p {
+                font-size: 11px;
+            }
+
+            .volume-controls {
+                display: none;
+            }
+
+            .player-controls {
+                max-width: 400px;
+            }
+
+            .control-buttons {
+                gap: 12px;
+            }
+
+            .control-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+
+            .play-pause-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+
+            /* Mostrar botón de play en dispositivos táctiles */
+            .song-card .play-btn {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN - MÓVILES
+        ============================================ */
+        @media (max-width: 480px) {
+            .main-header {
+                padding: 12px var(--mobile-padding);
+                gap: 12px;
+            }
+
+            .search-input {
+                height: 44px;
+                font-size: 16px; /* Previene zoom en iOS */
+            }
+
+            .profile-avatar {
+                width: 28px;
+                height: 28px;
+            }
+
+            .song-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .song-card {
+                padding: 12px;
+            }
+
+            .song-info h4 {
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+
+            .song-info p {
+                font-size: 12px;
+            }
+
+            .play-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+                bottom: 12px;
+                right: 12px;
+            }
+
+            /* Reproductor móvil */
+            .now-playing-bar {
+                padding: 0 12px;
+                gap: 8px;
+            }
+
+            .current-track {
+                flex: 0 0 140px;
+                gap: 12px;
+            }
+
+            .current-cover {
+                width: 40px;
+                height: 40px;
+            }
+
+            .like-btn {
+                display: none;
+            }
+
+            .player-controls {
+                max-width: none;
+                gap: 4px;
+            }
+
+            .control-buttons {
+                gap: 8px;
+            }
+
+            .control-btn {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+
+            .play-pause-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+
+            .progress-container {
+                gap: 6px;
+            }
+
+            .time-label {
+                display: none;
+            }
+
+            .progress-bar {
+                min-height: 16px; /* Mayor área táctil */
+            }
+
+            .welcome-section {
+                padding: 24px 0;
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN - MÓVILES PEQUEÑOS
+        ============================================ */
+        @media (max-width: 320px) {
+            .main-header {
+                padding: 12px;
+            }
+
+            .song-grid {
+                gap: 8px;
+            }
+
+            .song-card {
+                padding: 8px;
+            }
+
+            .now-playing-bar {
+                padding: 0 8px;
+                gap: 6px;
+            }
+
+            .current-track {
+                flex: 0 0 120px;
+                gap: 8px;
+            }
+
+            .control-buttons {
+                gap: 6px;
+            }
+
+            .progress-container {
+                gap: 4px;
+            }
+        }
+
+        /* ============================================
+           MEJORAS PARA ACCESIBILIDAD
+        ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .song-card:hover {
+                transform: none;
+            }
+
+            .play-btn:hover,
+            .control-btn:hover {
+                transform: none;
+            }
+        }
+
+        /* Mejora el contraste en modo alto contraste */
+        @media (prefers-contrast: high) {
+            :root {
+                --spotify-text-gray: #cccccc;
+                --spotify-gray: #404040;
+                --spotify-light-gray: #606060;
+            }
+        }
+
+        /* ============================================
+           ORIENTACIÓN LANDSCAPE EN MÓVILES
+        ============================================ */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .welcome-section {
+                padding: 16px 0;
+            }
+
+            .welcome-section h2 {
+                font-size: clamp(24px, 6vw, 32px);
+                margin-bottom: 8px;
+            }
+
+            .welcome-section p {
+                margin-bottom: 16px;
+            }
+
+            .song-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
