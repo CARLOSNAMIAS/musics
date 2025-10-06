@@ -549,33 +549,44 @@ $(document).ready(function () {
             e.preventDefault();
 
             const $item = $(e.currentTarget);
-
-            // Remover clase active de todos los items
-            DOM.navItems.removeClass('active');
-            // Agregar clase active al item clickeado
-            $item.addClass('active');
-
             const navText = $item.find('span').text();
 
-            // Simular navegación
+            // Ocultar todas las vistas principales
+            $('.view-container').addClass('hidden');
+
+            // Mostrar la vista correcta según el botón presionado
             switch (navText) {
                 case 'Inicio':
-                    UIHelper.showInfo('Vista de Inicio');
+                    // Si hay una búsqueda activa, mostrar los resultados, si no, la bienvenida
+                    if (DOM.searchInput.val().trim().length > 0) {
+                        DOM.searchResults.removeClass('hidden');
+                    } else {
+                        DOM.welcomeScreen.removeClass('hidden');
+                    }
                     break;
                 case 'Buscar':
+                    // La sección de búsqueda es la misma que la de inicio, solo enfocamos el input
+                    if (DOM.searchInput.val().trim().length > 0) {
+                        DOM.searchResults.removeClass('hidden');
+                    } else {
+                        DOM.welcomeScreen.removeClass('hidden');
+                    }
                     DOM.searchInput.focus();
-                    UIHelper.showInfo('Busca tu música favorita');
                     break;
                 case 'Tu biblioteca':
-                    UIHelper.showInfo('Tu biblioteca personal');
+                    $('#library-view').removeClass('hidden');
                     break;
                 case 'Crear playlist':
-                    UIHelper.showInfo('Crear nueva playlist');
+                    $('#create-playlist-view').removeClass('hidden');
                     break;
                 case 'Canciones que te gustan':
-                    UIHelper.showInfo('Tus canciones favoritas');
+                    $('#liked-songs-view').removeClass('hidden');
                     break;
             }
+
+            // Actualizar el estado activo del item de navegación
+            DOM.navItems.removeClass('active');
+            $item.addClass('active');
         }
     };
 

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1DB954" />
     <title>SpotifyClone - Tu Música</title>
     <link rel="icon" type="image/x-icon" href="./img/spofyy.svg" />
     <link
@@ -80,16 +81,37 @@
 
         <!-- Contenido principal -->
         <div class="main-content">
-          <!-- Pantalla de bienvenida -->
-          <div id="welcome-screen" class="welcome-section">
+          <!-- Pantalla de bienvenida (VISTA DE INICIO) -->
+          <div id="welcome-screen" class="welcome-section view-container">
             <h2>Busca tu música favorita</h2>
             <p>Encuentra millones de canciones y artistas de todo el mundo</p>
           </div>
 
-          <!-- Resultados de búsqueda -->
-          <div id="search-results" class="search-results hidden">
+          <!-- Resultados de búsqueda (VISTA DE BÚSQUEDA) -->
+          <div id="search-results" class="search-results view-container hidden">
             <h3>Resultados de búsqueda</h3>
             <ul id="song-list" class="song-grid"></ul>
+          </div>
+
+          <!-- VISTA: Tu Biblioteca -->
+          <div id="library-view" class="view-container hidden">
+            <h2>Tu Biblioteca</h2>
+            <p>Aquí aparecerán las playlists y álbumes que sigues.</p>
+            <!-- El contenido dinámico de la biblioteca irá aquí -->
+          </div>
+
+          <!-- VISTA: Canciones que te gustan -->
+          <div id="liked-songs-view" class="view-container hidden">
+            <h2>Canciones que te gustan</h2>
+            <p>Tu colección de canciones favoritas aparecerá aquí.</p>
+            <!-- La lista de canciones que te gustan irá aquí -->
+          </div>
+
+          <!-- VISTA: Crear Playlist -->
+          <div id="create-playlist-view" class="view-container hidden">
+            <h2>Crear una nueva playlist</h2>
+            <p>Dale un nombre y una descripción a tu nueva playlist.</p>
+            <!-- Un formulario para crear playlists irá aquí -->
           </div>
         </div>
       </main>
@@ -164,5 +186,12 @@
     </audio>
 
     <script src="script.js"></script>
+
+
+    
+  <!-- Simple Analytics para estadísticas (respeta la privacidad) -->
+  <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
+
   </body>
 </html>

@@ -182,8 +182,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(20px) saturate(180%);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -422,6 +422,7 @@
             margin: 0;
             display: -webkit-box;
             -webkit-line-clamp: 2;
+            line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             line-height: 1.4;
@@ -470,8 +471,8 @@
         .now-playing-bar {
             grid-area: now-playing;
             background: linear-gradient(180deg, rgba(40, 40, 40, 0.98) 0%, rgba(24, 24, 24, 0.98) 100%);
-            backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
             border-radius: 8px;
             padding: 0 16px;
             display: flex;
@@ -992,582 +993,581 @@
         /* ============================================
            RESPONSIVE DESIGN - MÓVILES
         ============================================ */
-        @media (max-width: 480px) {
-            .spotify-container {
-                grid-template-rows: 1fr auto; /* Adjust row height for player */
-            }
-
-            .main-header {
-                padding: 10px var(--mobile-padding);
-                gap: 10px;
-            }
-
-            .search-input {
-                height: 42px;
-                font-size: 16px;
-                padding: 0 44px 0 16px;
-            }
-
-            .search-icon {
-                font-size: 16px;
-                right: 16px;
-            }
-
-            .profile-btn {
-                min-width: 38px;
-                min-height: 38px;
-                padding: 4px;
-            }
-
-            .profile-avatar {
-                width: 26px;
-                height: 26px;
-                font-size: 11px;
-            }
-
-            .main-content {
-                padding: 12px var(--mobile-padding) var(--mobile-padding);
-            }
-
-            .song-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .song-card {
-                padding: 12px;
-            }
-
-            .song-cover {
-                border-radius: 6px;
-                margin-bottom: 12px;
-            }
-
-            .song-info h4 {
-                font-size: 14px;
-                margin-bottom: 4px;
-            }
-
-            .song-info p {
-                font-size: 12px;
-            }
-
-            .play-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-                bottom: 12px;
-                right: 12px;
-            }
-
-            /* Reproductor móvil -- REESTRUCTURADO */
-            .now-playing-bar {
-                height: auto; /* Permitir que la altura se ajuste */
-                min-height: 0;
-                padding: 12px;
-                gap: 12px; /* Espacio entre filas */
-                flex-wrap: wrap; /* Permitir que los elementos se apilen */
-                align-content: center;
-            }
-
-            .current-track {
-                flex-basis: 100%; /* Ocupar todo el ancho */
-                order: 1; /* Primera fila */
-                min-width: 0;
-                gap: 12px;
-                justify-content: flex-start; /* Alinear a la izquierda */
-            }
-            
-            .current-info {
-                text-align: left;
-            }
-
-            .current-info h4 {
-                font-size: 14px;
-            }
-
-            .current-info p {
-                font-size: 12px;
-            }
-
-            .like-btn {
-                display: none; /* Ocultar para dar más espacio */
-            }
-
-            .player-controls {
-                flex-basis: 100%; /* Ocupar todo el ancho */
-                order: 2; /* Segunda fila */
-                gap: 8px;
-            }
-
-            .control-buttons {
-                gap: 16px;
-            }
-
-            .control-btn {
-                width: 32px;
-                height: 32px;
-                font-size: 16px;
-            }
-
-            .play-pause-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
-            }
-
-            .progress-container {
-                gap: 10px;
-            }
-
-            .time-label {
-                font-size: 11px;
-                min-width: 36px;
-                display: block !important; /* Asegurar que el tiempo sea visible */
-            }
-
-            .progress-bar {
-                min-height: 18px;
-            }
-
-            .welcome-section {
-                padding: 32px 0;
-            }
-        }
-
-        /* ============================================
-           RESPONSIVE DESIGN - MÓVILES PEQUEÑOS
-        ============================================ */
-        @media (max-width: 380px) {
-            .main-header {
-                padding: 8px 12px;
-            }
-
-            .search-input {
-                height: 40px;
-                padding: 0 40px 0 14px;
-            }
-
-            .song-grid {
-                gap: 10px;
-            }
-
-            .song-card {
-                padding: 10px;
-            }
-
-            /* Los estilos de la barra de reproducción ahora son manejados por la media query de 480px */
-
-            .current-cover {
-                width: 38px;
-                height: 38px;
-            }
-
-            .control-buttons {
-                gap: 8px;
-            }
-
-            .control-btn {
-                width: 26px;
-                height: 26px;
-                font-size: 12px;
-            }
-
-            .play-pause-btn {
-                width: 32px;
-                height: 32px;
-                font-size: 14px;
-            }
-
-            .progress-container {
-                gap: 6px;
-            }
-
-            .progress-bar {
-                min-height: 20px;
-            }
-        }
-
-        /* ============================================
-           RESPONSIVE DESIGN - MÓVILES MUY PEQUEÑOS
-        ============================================ */
-        @media (max-width: 320px) {
-            .main-header {
-                padding: 8px 10px;
-            }
-
-            .song-grid {
-                gap: 8px;
-            }
-
-            .song-card {
-                padding: 8px;
-            }
-
-            .song-info h4 {
-                font-size: 13px;
-            }
-
-            .song-info p {
-                font-size: 11px;
-            }
-
-            .play-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 14px;
-                bottom: 10px;
-                right: 10px;
-            }
-
-            .now-playing-bar {
-                padding: 0 6px;
-            }
-
-            .current-track {
-                gap: 6px;
-            }
-
-            .control-buttons {
-                gap: 6px;
-            }
-
-            .control-btn {
-                width: 24px;
-                height: 24px;
-                font-size: 11px;
-            }
-
-            .play-pause-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 13px;
-            }
-        }
-
-        /* ============================================
-           ORIENTACIÓN LANDSCAPE EN MÓVILES
-        ============================================ */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .spotify-container {
-                grid-template-rows: 1fr 72px;
-            }
-
-            .welcome-section {
-                padding: 24px 0;
-            }
-
-            .welcome-section h2 {
-                font-size: clamp(24px, 5vw, 36px);
-                margin-bottom: 8px;
-            }
-
-            .welcome-section p {
-                font-size: clamp(14px, 2vw, 16px);
-                margin-bottom: 20px;
-            }
-
-            .song-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                gap: 12px;
-            }
-
-            .song-card {
-                padding: 12px;
-            }
-
-            .main-content {
-                padding: 16px var(--mobile-padding);
-            }
-
-            .now-playing-bar {
-                min-height: 72px;
-            }
-        }
-
-        /* ============================================
-           MEJORAS PARA ACCESIBILIDAD
-        ============================================ */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-
-            .song-card:hover {
-                transform: none;
-            }
-
-            .play-btn:hover,
-            .control-btn:hover,
-            .profile-btn:hover {
-                transform: none;
-            }
-
-            .nav-item::before {
-                transform: scaleY(1);
-            }
-        }
-
-        /* Mejora el contraste en modo alto contraste */
-        @media (prefers-contrast: high) {
-            :root {
-                --spotify-text-gray: #e0e0e0;
-                --spotify-gray: #404040;
-                --spotify-light-gray: #707070;
-                --spotify-green: #1ed760;
-            }
-
-            .nav-item:hover,
-            .nav-item.active {
-                background: rgba(255, 255, 255, 0.2);
-            }
-
-            .search-input {
-                border: 2px solid var(--spotify-light-gray);
-            }
-
-            .progress-bar,
-            .volume-slider {
-                border: 1px solid var(--spotify-light-gray);
-            }
-        }
-
-        /* ============================================
-           MODO OSCURO FORZADO (para navegadores)
-        ============================================ */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: var(--spotify-black);
-            }
-        }
-
-        /* ============================================
-           OPTIMIZACIONES PARA PANTALLAS GRANDES
-        ============================================ */
-        @media (min-width: 1920px) {
-            :root {
-                --sidebar-width: 320px;
-                --desktop-padding: 48px;
-            }
-
-            .spotify-sidebar {
-                padding: 32px 20px;
-            }
-
-            .spotify-logo h1 {
-                font-size: 28px;
-            }
-
-            .spotify-logo i {
-                font-size: 40px;
-            }
-
-            .nav-item {
-                padding: 14px 20px;
-                font-size: 16px;
-                min-height: 52px;
-            }
-
-            .nav-item i {
-                font-size: 28px;
-                width: 28px;
-            }
-
-            .song-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 28px;
-            }
-
-            .song-card {
-                padding: 24px;
-            }
-
-            .song-info h4 {
-                font-size: 18px;
-            }
-
-            .song-info p {
-                font-size: 15px;
-            }
-
-            .search-input {
-                height: 52px;
-                font-size: 15px;
-            }
-
-            .current-track {
-                flex: 0 0 350px;
-            }
-
-            .current-cover {
-                width: 64px;
-                height: 64px;
-            }
-
-            .current-info h4 {
-                font-size: 15px;
-            }
-
-            .current-info p {
-                font-size: 13px;
-            }
-        }
-
-        /* ============================================
-           ESTADOS DE ENFOQUE PARA ACCESIBILIDAD
-        ============================================ */
-        .nav-item:focus-visible,
-        .control-btn:focus-visible,
-        .play-btn:focus-visible,
-        .profile-btn:focus-visible,
-        .like-btn:focus-visible,
-        .volume-btn:focus-visible {
-            outline: 2px solid var(--spotify-green);
-            outline-offset: 2px;
-        }
-
-        .search-input:focus-visible {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.4);
-        }
-
-        /* ============================================
-           MEJORAS ADICIONALES DE UI
-        ============================================ */
+                @media (max-width: 480px) {
+                    .spotify-container {
+                        grid-template-rows: 1fr auto; /* Adjust row height for player */
+                    }
         
-        /* Efecto de ondas al hacer clic */
-        .ripple {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ripple::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .ripple:active::after {
-            width: 200px;
-            height: 200px;
-        }
-
-        /* Skeleton loading para imágenes */
-        .song-cover[src=""],
-        .current-cover[src=""] {
-            background: linear-gradient(
-                90deg,
-                var(--spotify-gray) 0%,
-                var(--spotify-light-gray) 50%,
-                var(--spotify-gray) 100%
-            );
-            background-size: 200% 100%;
-            animation: skeleton-loading 1.5s ease-in-out infinite;
-        }
-
-        @keyframes skeleton-loading {
-            0% {
-                background-position: 200% 0;
-            }
-            100% {
-                background-position: -200% 0;
-            }
-        }
-
-        /* Mejora para select e inputs personalizados */
-        input[type="range"] {
-            -webkit-appearance: none;
-            appearance: none;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--spotify-white);
-            cursor: pointer;
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--spotify-white);
-            cursor: pointer;
-            border: none;
-        }
-
-        /* Tooltip personalizado */
-        [data-tooltip] {
-            position: relative;
-        }
-
-        [data-tooltip]::before {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-8px);
-            padding: 6px 12px;
-            background: rgba(40, 40, 40, 0.95);
-            color: var(--spotify-white);
-            font-size: 12px;
-            font-weight: 500;
-            border-radius: 4px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity var(--transition-fast);
-            box-shadow: var(--shadow-md);
-            z-index: 1000;
-        }
-
-        [data-tooltip]:hover::before {
-            opacity: 1;
-        }
-
-        /* Animación de entrada suave para elementos */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .song-card {
-            animation: fadeInUp 0.4s ease-out backwards;
-        }
-
-        .song-card:nth-child(1) { animation-delay: 0.05s; }
-        .song-card:nth-child(2) { animation-delay: 0.1s; }
-        .song-card:nth-child(3) { animation-delay: 0.15s; }
-        .song-card:nth-child(4) { animation-delay: 0.2s; }
-        .song-card:nth-child(5) { animation-delay: 0.25s; }
-        .song-card:nth-child(6) { animation-delay: 0.3s; }
-
-        /* Desactivar animaciones de entrada en móviles para mejor rendimiento */
-        @media (max-width: 768px) {
-            .song-card {
-                animation: none;
-            }
-        }
+                    .main-header {
+                        padding: 10px var(--mobile-padding);
+                        gap: 10px;
+                    }
+        
+                    .search-input {
+                        height: 42px;
+                        font-size: 16px;
+                        padding: 0 44px 0 16px;
+                    }
+        
+                    .search-icon {
+                        font-size: 16px;
+                        right: 16px;
+                    }
+        
+                    .profile-btn {
+                        min-width: 38px;
+                        min-height: 38px;
+                        padding: 4px;
+                    }
+        
+                    .profile-avatar {
+                        width: 26px;
+                        height: 26px;
+                        font-size: 11px;
+                    }
+        
+                    .main-content {
+                        padding: 12px var(--mobile-padding) var(--mobile-padding);
+                    }
+        
+                    .song-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 12px;
+                    }
+        
+                    .song-card {
+                        padding: 12px;
+                    }
+        
+                    .song-cover {
+                        border-radius: 6px;
+                        margin-bottom: 12px;
+                    }
+        
+                    .song-info h4 {
+                        font-size: 14px;
+                        margin-bottom: 4px;
+                    }
+        
+                    .song-info p {
+                        font-size: 12px;
+                    }
+        
+                    .play-btn {
+                        width: 40px;
+                        height: 40px;
+                        font-size: 16px;
+                        bottom: 12px;
+                        right: 12px;
+                    }
+        
+                    /* Reproductor móvil -- REESTRUCTURADO Y OPTIMIZADO */
+                    .now-playing-bar {
+                        height: auto; 
+                        min-height: 0;
+                        padding: 10px;
+                        gap: 10px; 
+                        flex-wrap: wrap; 
+                        align-content: center;
+                    }
+        
+                    .current-track {
+                        flex-basis: 100%; 
+                        order: 1; 
+                        min-width: 0;
+                        gap: 10px;
+                        justify-content: flex-start; 
+                    }
+                    
+                    .current-info {
+                        text-align: left;
+                        min-width: 0; /* Clave para que text-overflow funcione en flexbox */
+                    }
+        
+                    .current-info h4 {
+                        font-size: 14px;
+                    }
+        
+                    .current-info p {
+                        font-size: 12px;
+                    }
+        
+                    .like-btn {
+                        display: none; /* Ocultar para dar más espacio */
+                    }
+        
+                    .player-controls {
+                        flex-basis: 100%; 
+                        order: 2; 
+                        gap: 8px;
+                    }
+        
+                    .control-buttons {
+                        gap: 12px; /* Reducido */
+                    }
+        
+                    .control-btn {
+                        width: 32px;
+                        height: 32px;
+                        font-size: 16px;
+                    }
+        
+                    .play-pause-btn {
+                        width: 40px;
+                        height: 40px;
+                        font-size: 18px;
+                    }
+        
+                    .progress-container {
+                        gap: 8px; /* Reducido */
+                    }
+        
+                    .time-label {
+                        font-size: 11px;
+                        min-width: 34px; /* Reducido */
+                        display: block !important; 
+                    }
+        
+                    .progress-bar {
+                        min-height: 18px;
+                    }
+        
+                    .welcome-section {
+                        padding: 32px 0;
+                    }
+                }
+        
+                /* ============================================
+                   RESPONSIVE DESIGN - MÓVILES PEQUEÑOS
+                ============================================ */
+                @media (max-width: 380px) {
+                    .main-header {
+                        padding: 8px 12px;
+                    }
+        
+                    .search-input {
+                        height: 40px;
+                        padding: 0 40px 0 14px;
+                    }
+        
+                    .song-grid {
+                        gap: 10px;
+                    }
+        
+                    .song-card {
+                        padding: 10px;
+                    }
+        
+                    .current-cover {
+                        width: 40px;
+                        height: 40px;
+                    }
+        
+                    .control-buttons {
+                        gap: 10px; /* Ajustado */
+                    }
+        
+                    .control-btn {
+                        width: 28px;
+                        height: 28px;
+                        font-size: 13px;
+                    }
+        
+                    .play-pause-btn {
+                        width: 34px;
+                        height: 34px;
+                        font-size: 15px;
+                    }
+        
+                    .progress-container {
+                        gap: 8px;
+                    }
+        
+                    .progress-bar {
+                        min-height: 20px;
+                    }
+                }
+        
+                /* ============================================
+                   RESPONSIVE DESIGN - MÓVILES MUY PEQUEÑOS
+                ============================================ */
+                @media (max-width: 320px) {
+                    .main-header {
+                        padding: 8px 10px;
+                    }
+        
+                    .song-grid {
+                        gap: 8px;
+                    }
+        
+                    .song-card {
+                        padding: 8px;
+                    }
+        
+                    .song-info h4 {
+                        font-size: 13px;
+                    }
+        
+                    .song-info p {
+                        font-size: 11px;
+                    }
+        
+                    .play-btn {
+                        width: 36px;
+                        height: 36px;
+                        font-size: 14px;
+                        bottom: 10px;
+                        right: 10px;
+                    }
+        
+                    .now-playing-bar {
+                        padding: 8px 6px;
+                    }
+        
+                    .current-track {
+                        gap: 8px;
+                    }
+        
+                    .control-buttons {
+                        gap: 8px;
+                    }
+        
+                    .control-btn {
+                        width: 26px;
+                        height: 26px;
+                        font-size: 12px;
+                    }
+        
+                    .play-pause-btn {
+                        width: 32px;
+                        height: 32px;
+                        font-size: 14px;
+                    }
+                }
+        
+                /* ============================================
+                   ORIENTACIÓN LANDSCAPE EN MÓVILES
+                ============================================ */
+                @media (max-width: 768px) and (orientation: landscape) {
+                    .spotify-container {
+                        grid-template-rows: 1fr 72px;
+                    }
+        
+                    .welcome-section {
+                        padding: 24px 0;
+                    }
+        
+                    .welcome-section h2 {
+                        font-size: clamp(24px, 5vw, 36px);
+                        margin-bottom: 8px;
+                    }
+        
+                    .welcome-section p {
+                        font-size: clamp(14px, 2vw, 16px);
+                        margin-bottom: 20px;
+                    }
+        
+                    .song-grid {
+                        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                        gap: 12px;
+                    }
+        
+                    .song-card {
+                        padding: 12px;
+                    }
+        
+                    .main-content {
+                        padding: 16px var(--mobile-padding);
+                    }
+        
+                    .now-playing-bar {
+                        min-height: 72px;
+                    }
+                }
+        
+                /* ============================================
+                   MEJORAS PARA ACCESIBILIDAD
+                ============================================ */
+                @media (prefers-reduced-motion: reduce) {
+                    *,
+                    *::before,
+                    *::after {
+                        animation-duration: 0.01ms !important;
+                        animation-iteration-count: 1 !important;
+                        transition-duration: 0.01ms !important;
+                        scroll-behavior: auto !important;
+                    }
+        
+                    .song-card:hover {
+                        transform: none;
+                    }
+        
+                    .play-btn:hover,
+                    .control-btn:hover,
+                    .profile-btn:hover {
+                        transform: none;
+                    }
+        
+                    .nav-item::before {
+                        transform: scaleY(1);
+                    }
+                }
+        
+                /* Mejora el contraste en modo alto contraste */
+                @media (prefers-contrast: high) {
+                    :root {
+                        --spotify-text-gray: #e0e0e0;
+                        --spotify-gray: #404040;
+                        --spotify-light-gray: #707070;
+                        --spotify-green: #1ed760;
+                    }
+        
+                    .nav-item:hover,
+                    .nav-item.active {
+                        background: rgba(255, 255, 255, 0.2);
+                    }
+        
+                    .search-input {
+                        border: 2px solid var(--spotify-light-gray);
+                    }
+        
+                    .progress-bar,
+                    .volume-slider {
+                        border: 1px solid var(--spotify-light-gray);
+                    }
+                }
+        
+                /* ============================================
+                   MODO OSCURO FORZADO (para navegadores)
+                ============================================ */
+                @media (prefers-color-scheme: dark) {
+                    body {
+                        background: var(--spotify-black);
+                    }
+                }
+        
+                /* ============================================
+                   OPTIMIZACIONES PARA PANTALLAS GRANDES
+                ============================================ */
+                @media (min-width: 1920px) {
+                    :root {
+                        --sidebar-width: 320px;
+                        --desktop-padding: 48px;
+                    }
+        
+                    .spotify-sidebar {
+                        padding: 32px 20px;
+                    }
+        
+                    .spotify-logo h1 {
+                        font-size: 28px;
+                    }
+        
+                    .spotify-logo i {
+                        font-size: 40px;
+                    }
+        
+                    .nav-item {
+                        padding: 14px 20px;
+                        font-size: 16px;
+                        min-height: 52px;
+                    }
+        
+                    .nav-item i {
+                        font-size: 28px;
+                        width: 28px;
+                    }
+        
+                    .song-grid {
+                        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                        gap: 28px;
+                    }
+        
+                    .song-card {
+                        padding: 24px;
+                    }
+        
+                    .song-info h4 {
+                        font-size: 18px;
+                    }
+        
+                    .song-info p {
+                        font-size: 15px;
+                    }
+        
+                    .search-input {
+                        height: 52px;
+                        font-size: 15px;
+                    }
+        
+                    .current-track {
+                        flex: 0 0 350px;
+                    }
+        
+                    .current-cover {
+                        width: 64px;
+                        height: 64px;
+                    }
+        
+                    .current-info h4 {
+                        font-size: 15px;
+                    }
+        
+                    .current-info p {
+                        font-size: 13px;
+                    }
+                }
+        
+                /* ============================================
+                   ESTADOS DE ENFOQUE PARA ACCESIBILIDAD
+                ============================================ */
+                .nav-item:focus-visible,
+                .control-btn:focus-visible,
+                .play-btn:focus-visible,
+                .profile-btn:focus-visible,
+                .like-btn:focus-visible,
+                .volume-btn:focus-visible {
+                    outline: 2px solid var(--spotify-green);
+                    outline-offset: 2px;
+                }
+        
+                .search-input:focus-visible {
+                    outline: none;
+                    box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.4);
+                }
+        
+                /* ============================================
+                   MEJORAS ADICIONALES DE UI
+                ============================================ */
+                
+                /* Efecto de ondas al hacer clic */
+                .ripple {
+                    position: relative;
+                    overflow: hidden;
+                }
+        
+                .ripple::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 0;
+                    height: 0;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.3);
+                    transform: translate(-50%, -50%);
+                    transition: width 0.6s, height 0.6s;
+                }
+        
+                .ripple:active::after {
+                    width: 200px;
+                    height: 200px;
+                }
+        
+                /* Skeleton loading para imágenes */
+                .song-cover[src=""],
+                .current-cover[src=""] {
+                    background: linear-gradient(
+                        90deg,
+                        var(--spotify-gray) 0%,
+                        var(--spotify-light-gray) 50%,
+                        var(--spotify-gray) 100%
+                    );
+                    background-size: 200% 100%;
+                    animation: skeleton-loading 1.5s ease-in-out infinite;
+                }
+        
+                @keyframes skeleton-loading {
+                    0% {
+                        background-position: 200% 0;
+                    }
+                    100% {
+                        background-position: -200% 0;
+                    }
+                }
+        
+                /* Mejora para select e inputs personalizados */
+                input[type="range"] {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    background: transparent;
+                    cursor: pointer;
+                }
+        
+                input[type="range"]::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    background: var(--spotify-white);
+                    cursor: pointer;
+                }
+        
+                input[type="range"]::-moz-range-thumb {
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    background: var(--spotify-white);
+                    cursor: pointer;
+                    border: none;
+                }
+        
+                /* Tooltip personalizado */
+                [data-tooltip] {
+                    position: relative;
+                }
+        
+                [data-tooltip]::before {
+                    content: attr(data-tooltip);
+                    position: absolute;
+                    bottom: 100%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-8px);
+                    padding: 6px 12px;
+                    background: rgba(40, 40, 40, 0.95);
+                    color: var(--spotify-white);
+                    font-size: 12px;
+                    font-weight: 500;
+                    border-radius: 4px;
+                    white-space: nowrap;
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity var(--transition-fast);
+                    box-shadow: var(--shadow-md);
+                    z-index: 1000;
+                }
+        
+                [data-tooltip]:hover::before {
+                    opacity: 1;
+                }
+        
+                /* Animación de entrada suave para elementos */
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+        
+                .song-card {
+                    animation: fadeInUp 0.4s ease-out backwards;
+                }
+        
+                .song-card:nth-child(1) { animation-delay: 0.05s; }
+                .song-card:nth-child(2) { animation-delay: 0.1s; }
+                .song-card:nth-child(3) { animation-delay: 0.15s; }
+                .song-card:nth-child(4) { animation-delay: 0.2s; }
+                .song-card:nth-child(5) { animation-delay: 0.25s; }
+                .song-card:nth-child(6) { animation-delay: 0.3s; }
+        
+                /* Desactivar animaciones de entrada en móviles para mejor rendimiento */
+                @media (max-width: 768px) {
+                    .song-card {
+                        animation: none;
+                    }
+                }
