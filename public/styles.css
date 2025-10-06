@@ -4,14 +4,14 @@
         :root {
             --spotify-green: #1DB954;
             --spotify-green-hover: #1ed760;
-            --spotify-black: #191414;
+            --spotify-black: #000000;
             --spotify-dark-gray: #121212;
-            --spotify-gray: #282828;
+            --spotify-gray: #292929;
             --spotify-light-gray: #535353;
             --spotify-text-gray: #b3b3b3;
             --spotify-white: #ffffff;
             --spotify-hover: rgba(255, 255, 255, 0.1);
-            --spotify-card-hover: rgba(255, 255, 255, 0.07);
+            --spotify-card-hover: rgba(255, 255, 255, 0.151);
             
             /* Sombras mejoradas */
             --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -640,8 +640,6 @@
             cursor: pointer;
             position: relative;
             min-height: 14px;
-            display: flex;
-            align-items: center;
             transition: height var(--transition-fast);
         }
 
@@ -722,8 +720,6 @@
             cursor: pointer;
             position: relative;
             min-height: 14px;
-            display: flex;
-            align-items: center;
             transition: height var(--transition-fast);
         }
 
@@ -998,7 +994,7 @@
         ============================================ */
         @media (max-width: 480px) {
             .spotify-container {
-                grid-template-rows: 1fr 72px;
+                grid-template-rows: 1fr auto; /* Adjust row height for player */
             }
 
             .main-header {
@@ -1064,66 +1060,70 @@
                 right: 12px;
             }
 
-            /* Reproductor móvil */
+            /* Reproductor móvil -- REESTRUCTURADO */
             .now-playing-bar {
-                min-height: 72px;
-                padding: 0 10px;
-                gap: 8px;
+                height: auto; /* Permitir que la altura se ajuste */
+                min-height: 0;
+                padding: 12px;
+                gap: 12px; /* Espacio entre filas */
+                flex-wrap: wrap; /* Permitir que los elementos se apilen */
+                align-content: center;
             }
 
             .current-track {
-                flex: 0 0 40%;
-                min-width: 130px;
-                gap: 10px;
+                flex-basis: 100%; /* Ocupar todo el ancho */
+                order: 1; /* Primera fila */
+                min-width: 0;
+                gap: 12px;
+                justify-content: flex-start; /* Alinear a la izquierda */
             }
-
-            .current-cover {
-                width: 42px;
-                height: 42px;
-                border-radius: 4px;
+            
+            .current-info {
+                text-align: left;
             }
 
             .current-info h4 {
-                font-size: 12px;
-            }
-
-            .current-info p {
-                font-size: 10px;
-            }
-
-            .like-btn {
-                min-width: 32px;
-                min-height: 32px;
-                font-size: 16px;
-            }
-
-            .player-controls {
-                gap: 6px;
-            }
-
-            .control-buttons {
-                gap: 10px;
-            }
-
-            .control-btn {
-                width: 28px;
-                height: 28px;
                 font-size: 14px;
             }
 
-            .play-pause-btn {
-                width: 34px;
-                height: 34px;
+            .current-info p {
+                font-size: 12px;
+            }
+
+            .like-btn {
+                display: none; /* Ocultar para dar más espacio */
+            }
+
+            .player-controls {
+                flex-basis: 100%; /* Ocupar todo el ancho */
+                order: 2; /* Segunda fila */
+                gap: 8px;
+            }
+
+            .control-buttons {
+                gap: 16px;
+            }
+
+            .control-btn {
+                width: 32px;
+                height: 32px;
                 font-size: 16px;
             }
 
+            .play-pause-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
             .progress-container {
-                gap: 8px;
+                gap: 10px;
             }
 
             .time-label {
                 font-size: 11px;
                 min-width: 36px;
+                display: block !important; /* Asegurar que el tiempo sea visible */
             }
 
             .progress-bar {
@@ -1156,24 +1156,11 @@
                 padding: 10px;
             }
 
-            .now-playing-bar {
-                padding: 0 8px;
-                gap: 6px;
-            }
-
-            .current-track {
-                flex: 0 0 45%;
-                min-width: 110px;
-                gap: 8px;
-            }
+            /* Los estilos de la barra de reproducción ahora son manejados por la media query de 480px */
 
             .current-cover {
                 width: 38px;
                 height: 38px;
-            }
-
-            .like-btn {
-                display: none;
             }
 
             .control-buttons {
@@ -1194,10 +1181,6 @@
 
             .progress-container {
                 gap: 6px;
-            }
-
-            .time-label {
-                display: none;
             }
 
             .progress-bar {
