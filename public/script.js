@@ -15,6 +15,11 @@
  */
 
 $(document).ready(function () {
+    // Lógica para el Splash Screen: esperar 1.5s y luego desvanecer
+    setTimeout(function() {
+        $('#splash-screen').fadeOut(750); // 750ms de animación de desvanecimiento
+    }, 1500); // 1500ms = 1.5 segundos de espera
+
     console.log('🎵 Spotify Clone iniciado correctamente');
 
     // ============================================
